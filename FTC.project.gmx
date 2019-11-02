@@ -10,23 +10,22 @@
       <sprite>sprites\sp_robot</sprite>
     </sprites>
     <sprites name="Ui">
-      <sprite>sprites\sp_play</sprite>
-      <sprite>sprites\sp_scores</sprite>
-      <sprite>sprites\sp_settings</sprite>
-      <sprite>sprites\sp_controls</sprite>
-      <sprite>sprites\sp_exit</sprite>
+      <sprite>sprites\sp_button</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
   <objects name="objects">
     <objects name="Game">
-      <object>objects\o_robot</object>
+      <object>objects\o_Robot</object>
+    </objects>
+    <objects name="Ui">
+      <object>objects\o_AbstractButton</object>
     </objects>
   </objects>
   <rooms name="rooms">
-    <room>rooms\r_game</room>
     <room>rooms\r_menu</room>
+    <room>rooms\r_game</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>
