@@ -8,6 +8,7 @@
   <sprites name="sprites">
     <sprites name="Game">
       <sprite>sprites\sp_robot</sprite>
+      <sprite>sprites\s_box</sprite>
     </sprites>
     <sprites name="Ui">
       <sprite>sprites\sp_smallButton</sprite>
@@ -22,6 +23,7 @@
   <objects name="objects">
     <objects name="Game">
       <object>objects\o_Robot</object>
+      <object>objects\o_Box</object>
     </objects>
     <objects name="Ui">
       <object>objects\o_AbstractButton</object>

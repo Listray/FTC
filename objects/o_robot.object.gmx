@@ -52,9 +52,8 @@ m_down = vk_down
           <argument>
             <kind>1</kind>
             <string>/// Physics
-m_maxForwardSpd = 3
-m_maxReverseSpd = -m_maxForwardSpd // should be less then 0
-m_turnRadius = 0.4
+m_maxSpd = 3
+m_turnSpd = 1
 m_acceleration = 0.2
 
 </string>
@@ -86,46 +85,67 @@ var down = keyboard_check(m_down)
 
 if(up)
 {
-    if(speed &lt; m_maxForwardSpd)
-        speed += m_acceleration
+    if(phy_speed_x &gt; m_maxSpd)
+        phy_speed_x = m_maxSpd
+    else
+        phy_speed_x += lengthdir_x(m_acceleration, -phy_rotation)
+        
+    if(phy_speed_x &gt; m_maxSpd)
+        phy_speed_x = m_maxSpd
+    else 
+        phy_speed_y += lengthdir_y(m_acceleration, -phy_rotation)
 }
 else if(down)
 {
-    if(speed &gt; m_maxReverseSpd)
-        speed -= m_acceleration
+    if(phy_speed_x &gt; m_maxSpd)
+        phy_speed_x = m_maxSpd
+    else
+        phy_speed_x += lengthdir_x(-m_acceleration, -phy_rotation)
+        
+    if(phy_speed_x &gt; m_maxSpd)
+        phy_speed_x = m_maxSpd
+    else 
+        phy_speed_y += lengthdir_y(-m_acceleration, -phy_rotation)
 }
+/**/
+else
+{
+    phy_speed_x = 0
+    phy_speed_y = 0
+}
+/**/
 if(keyboard_check(m_right))
 {
-    direction -= speed * m_turnRadius
+    phy_rotation += m_turnSpd
 }
 else if(keyboard_check(m_left))
 {
-    direction += speed * m_turnRadius
+    phy_rotation -= m_turnSpd
 }
-
-if(!up and !down)
-{
-    if(friction &lt; 1) friction += 0.05
-}
-else friction = 0
 
 image_angle = direction
+
 </string>
           </argument>
         </arguments>
       </action>
     </event>
   </events>
-  <PhysicsObject>0</PhysicsObject>
+  <PhysicsObject>-1</PhysicsObject>
   <PhysicsObjectSensor>0</PhysicsObjectSensor>
-  <PhysicsObjectShape>0</PhysicsObjectShape>
-  <PhysicsObjectDensity>0.5</PhysicsObjectDensity>
-  <PhysicsObjectRestitution>0.100000001490116</PhysicsObjectRestitution>
+  <PhysicsObjectShape>1</PhysicsObjectShape>
+  <PhysicsObjectDensity>15</PhysicsObjectDensity>
+  <PhysicsObjectRestitution>0</PhysicsObjectRestitution>
   <PhysicsObjectGroup>0</PhysicsObjectGroup>
-  <PhysicsObjectLinearDamping>0.100000001490116</PhysicsObjectLinearDamping>
-  <PhysicsObjectAngularDamping>0.100000001490116</PhysicsObjectAngularDamping>
-  <PhysicsObjectFriction>0.200000002980232</PhysicsObjectFriction>
+  <PhysicsObjectLinearDamping>10</PhysicsObjectLinearDamping>
+  <PhysicsObjectAngularDamping>10</PhysicsObjectAngularDamping>
+  <PhysicsObjectFriction>0</PhysicsObjectFriction>
   <PhysicsObjectAwake>-1</PhysicsObjectAwake>
   <PhysicsObjectKinematic>0</PhysicsObjectKinematic>
-  <PhysicsShapePoints/>
+  <PhysicsShapePoints>
+    <point>90,90</point>
+    <point>0,90</point>
+    <point>0,0</point>
+    <point>90,0</point>
+  </PhysicsShapePoints>
 </object>
