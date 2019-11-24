@@ -8,28 +8,43 @@
   <sprites name="sprites">
     <sprites name="Game">
       <sprite>sprites\sp_robot</sprite>
+      <sprite>sprites\sp_wall</sprite>
       <sprite>sprites\s_box</sprite>
+      <sprite>sprites\sp_gate</sprite>
+      <sprite>sprites\sp_platform</sprite>
+      <sprite>sprites\s_gateColumn</sprite>
     </sprites>
     <sprites name="Ui">
       <sprite>sprites\sp_smallButton</sprite>
       <sprite>sprites\sp_button</sprite>
     </sprites>
   </sprites>
-  <backgrounds name="background"/>
+  <backgrounds name="background">
+    <background>background\t_gatePlatform</background>
+    <background>background\b_square</background>
+  </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
     <script>scripts\deactivateControlButton.gml</script>
   </scripts>
   <objects name="objects">
     <objects name="Game">
+      <objects name="Solid">
+        <object>objects\o_GateColumn</object>
+        <object>objects\o_Wall</object>
+        <object>objects\o_Box</object>
+        <object>objects\o_Collisiable</object>
+        <object>objects\o_Platform</object>
+      </objects>
       <object>objects\o_Robot</object>
-      <object>objects\o_Box</object>
+      <object>objects\o_Gate</object>
     </objects>
     <objects name="Ui">
       <object>objects\o_AbstractButton</object>
       <object>objects\o_ControlButton</object>
       <object>objects\o_RoomGotoButton</object>
     </objects>
+    <object>objects\object10</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\r_menu</room>
