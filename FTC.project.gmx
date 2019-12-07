@@ -26,6 +26,8 @@
   <paths name="paths"/>
   <scripts name="scripts">
     <script>scripts\deactivateControlButton.gml</script>
+    <script>scripts\throwEvent.gml</script>
+    <script>scripts\catchEvent.gml</script>
   </scripts>
   <objects name="objects">
     <objects name="Game">
@@ -44,7 +46,6 @@
       <object>objects\o_ControlButton</object>
       <object>objects\o_RoomGotoButton</object>
     </objects>
-    <object>objects\object10</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\r_menu</room>

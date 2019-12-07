@@ -8,7 +8,7 @@
   <sepmasks>0</sepmasks>
   <bboxmode>0</bboxmode>
   <bbox_left>0</bbox_left>
-  <bbox_right>88</bbox_right>
+  <bbox_right>134</bbox_right>
   <bbox_top>0</bbox_top>
   <bbox_bottom>88</bbox_bottom>
   <HTile>0</HTile>
@@ -17,9 +17,10 @@
     <TextureGroup0>0</TextureGroup0>
   </TextureGroups>
   <For3D>0</For3D>
-  <width>89</width>
+  <width>135</width>
   <height>89</height>
   <frames>
     <frame index="0">images\sp_robot_0.png</frame>
+    <frame index="1">images\sp_robot_1.png</frame>
   </frames>
 </sprite>

@@ -31,6 +31,89 @@ m_left = vk_left
 m_right = vk_right
 m_down = vk_down
 
+image_speed = 0 // throw state
+m_catch = ord('F')
+m_throw = ord('Z')
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Fixtures
+
+//  Active
+m_activeFixture = physics_fixture_create();
+physics_fixture_set_box_shape(
+    m_activeFixture,
+    sprite_get_width(self.sprite_index) / 2,
+    sprite_get_height(self.sprite_index) / 2
+);
+//physics_fixture_set_polygon_shape(m_activeFixture);
+
+//var lastX = sprite_get_width(self.sprite_index) - 1;
+//var lastY = sprite_get_height(self.sprite_index) - 1;
+//var br = 2; //  catcher's border width
+//var cw = sprite_get_width(self.sprite_index); // catcher's width, its 1/3 of sprite width
+
+//physics_fixture_add_point(m_activeFixture, 0, 0);
+//physics_fixture_add_point(m_activeFixture, lastX, 0);
+//physics_fixture_add_point(m_activeFixture, lastX, lastY);
+////physics_fixture_add_point(m_activeFixture, lastX - br, lastY - br);
+////physics_fixture_add_point(m_activeFixture, lastX - br, 0 + br);
+////physics_fixture_add_point(m_activeFixture, lastX - cw + br, 0 + br);
+////physics_fixture_add_point(m_activeFixture, lastX - cw + br, lastY - br);
+////physics_fixture_add_point(m_activeFixture, lastX - br, lastY - br);
+////physics_fixture_add_point(m_activeFixture, lastX, lastY);
+//physics_fixture_add_point(m_activeFixture, 0, lastY);
+
+
+//  Idle
+m_idleFixture = physics_fixture_create();
+//physics_fixture_set_polygon_shape(m_idleFixture)
+physics_fixture_set_box_shape(
+    m_idleFixture,
+    sprite_get_width(self.sprite_index) / 3,
+    sprite_get_height(self.sprite_index) / 2
+);
+//var boxLastX = sprite_get_width(self.sprite_index) / 3 * 2 - 1;
+
+//physics_fixture_add_point(m_idleFixture, 0, 0);
+//physics_fixture_add_point(m_idleFixture, boxLastX, 0);
+//physics_fixture_add_point(m_idleFixture, boxLastX, lastY);
+//physics_fixture_add_point(m_idleFixture, 0, lastY);
+
+//  Common options
+physics_fixture_set_density(m_idleFixture, 15)
+physics_fixture_set_density(m_activeFixture, 15)
+
+physics_fixture_set_friction(m_idleFixture, 0)
+physics_fixture_set_friction(m_activeFixture, 0)
+
+physics_fixture_set_restitution(m_idleFixture, 0)
+physics_fixture_set_restitution(m_activeFixture, 0)
+
+physics_fixture_set_linear_damping(m_idleFixture, 10)
+physics_fixture_set_linear_damping(m_activeFixture, 10)
+
+physics_fixture_set_angular_damping(m_idleFixture, 10)
+physics_fixture_set_angular_damping(m_activeFixture, 10)
+
 </string>
           </argument>
         </arguments>
@@ -55,7 +138,7 @@ m_down = vk_down
 m_maxSpd = 3
 m_turnSpd = 1
 m_acceleration = 0.2
-
+physics_fixture_bind(m_idleFixture, self)
 </string>
           </argument>
         </arguments>
@@ -80,10 +163,7 @@ m_acceleration = 0.2
             <kind>1</kind>
             <string>/// Movement
 
-var up = keyboard_check(m_up)
-var down = keyboard_check(m_down)
-
-if(up)
+if(keyboard_check(m_up))
 {
     if(phy_speed_x &gt; m_maxSpd)
         phy_speed_x = m_maxSpd
@@ -95,7 +175,7 @@ if(up)
     else 
         phy_speed_y += lengthdir_y(m_acceleration, -phy_rotation)
 }
-else if(down)
+else if(keyboard_check(m_down))
 {
     if(phy_speed_x &gt; m_maxSpd)
         phy_speed_x = m_maxSpd
@@ -107,21 +187,21 @@ else if(down)
     else 
         phy_speed_y += lengthdir_y(-m_acceleration, -phy_rotation)
 }
-/**/
 else
 {
     phy_speed_x = 0
     phy_speed_y = 0
 }
-/**/
+
 if(keyboard_check(m_right))
-{
     phy_rotation += m_turnSpd
-}
 else if(keyboard_check(m_left))
-{
     phy_rotation -= m_turnSpd
-}
+    
+if(keyboard_check(m_catch))
+    catchEvent()
+else if(keyboard_check(m_throw))
+    throwEvent()
 
 image_angle = direction
 
@@ -131,7 +211,7 @@ image_angle = direction
       </action>
     </event>
   </events>
-  <PhysicsObject>-1</PhysicsObject>
+  <PhysicsObject>0</PhysicsObject>
   <PhysicsObjectSensor>0</PhysicsObjectSensor>
   <PhysicsObjectShape>1</PhysicsObjectShape>
   <PhysicsObjectDensity>15</PhysicsObjectDensity>
@@ -142,10 +222,5 @@ image_angle = direction
   <PhysicsObjectFriction>0</PhysicsObjectFriction>
   <PhysicsObjectAwake>-1</PhysicsObjectAwake>
   <PhysicsObjectKinematic>0</PhysicsObjectKinematic>
-  <PhysicsShapePoints>
-    <point>90,90</point>
-    <point>0,90</point>
-    <point>0,0</point>
-    <point>90,0</point>
-  </PhysicsShapePoints>
+  <PhysicsShapePoints/>
 </object>
