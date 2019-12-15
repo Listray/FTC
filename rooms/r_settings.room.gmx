@@ -52,7 +52,7 @@
   </views>
   <instances>
     <instance objName="o_RoomGotoButton" x="640" y="576" name="inst_E5F98EC7" locked="0" code="m_roomToGo = r_menu&#xA;m_buttonText = &quot;Back to menu&quot;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="o_RoomGotoButton" x="640" y="352" name="inst_6D77ACD7" locked="0" code="m_roomToGo = r_controls&#xA;m_buttonText = &quot;Controls&quot;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="o_RoomGotoButton" x="640" y="352" name="inst_6D77ACD7" locked="0" code="m_roomToGo = r_controls&#xA;m_buttonText = &quot;Controls&quot;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

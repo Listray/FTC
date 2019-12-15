@@ -4,7 +4,7 @@
   <solid>0</solid>
   <visible>-1</visible>
   <depth>0</depth>
-  <persistent>0</persistent>
+  <persistent>-1</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
@@ -25,12 +25,12 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>alarm_set(0, /*2 * 60 **/ room_speed);  //  2 mins
-
-timerXPos = display_get_gui_width() / 2;
+            <string>timerXPos = display_get_gui_width() / 2;
 timerYPos = display_get_gui_height() / 100 * 2; //  2% y offset
 
 draw_set_halign(fa_center);
+
+m_score = 0
 
 </string>
           </argument>
@@ -55,8 +55,68 @@ draw_set_halign(fa_center);
           <argument>
             <kind>1</kind>
             <string>alarm[0]--;
-if(alarm[0] == 0)
-    alarm[0] = 1000
+
+if(alarm[0] == 30 * room_speed)
+{
+    with(o_Platform)
+    {
+        var nearestBZ = instance_nearest(x, y, o_BuildingZone);
+        if(distance_to_object(nearestBZ) &lt; sprite_height / 2)
+            m_wasInBZ = true
+    }
+}
+else if(alarm[0] == 0)
+{
+    with(o_Stone)
+    {
+        if (m_gatePoint == true)
+            o_Controller.m_score++
+            
+        if (position_meeting(x, y, o_Platform))
+            o_Controller.m_score++
+    }
+    
+    with(o_Platform)
+    {   
+        if(m_wasInBZ)
+        {         
+            var nearestBZ = instance_nearest(x, y, o_BuildingZone);
+            if(distance_to_object(nearestBZ) &gt; sprite_width / 2)
+                o_Controller.m_score += 15
+        }
+    }
+    
+    room_goto(r_score)
+}
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="4">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Timer &amp; o_ScoreBanner text
+if(room == r_game)
+    alarm_set(0, /*2 **/ 60 * room_speed);  //  2 mins
+else if(room == r_score)
+    o_ScoreBanner.m_buttonText = "Scores: " + string(m_score)
+    
 </string>
           </argument>
         </arguments>
@@ -80,7 +140,10 @@ if(alarm[0] == 0)
           <argument>
             <kind>1</kind>
             <string>draw_set_color(c_white)
-draw_text(timerXPos, timerYPos, alarm[0] / room_speed)
+
+if(alarm[0] &gt; 0)
+    draw_text(timerXPos, timerYPos, alarm[0] / room_speed)
+
 </string>
           </argument>
         </arguments>
