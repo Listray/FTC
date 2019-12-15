@@ -8,7 +8,7 @@
   <isometric>0</isometric>
   <speed>60</speed>
   <persistent>0</persistent>
-  <colour>12632256</colour>
+  <colour>2368548</colour>
   <showcolour>-1</showcolour>
   <code></code>
   <enableViews>0</enableViews>
@@ -75,6 +75,7 @@
     <instance objName="o_Box" x="432" y="252" name="inst_B9DBD7A1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="o_Box" x="474" y="252" name="inst_7B51CAFC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="o_Box" x="516" y="252" name="inst_C53AEA82" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="o_Controller" x="168" y="90" name="inst_EE0A5924" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="t_gatePlatform" x="610" y="241" w="60" h="238" xo="0" yo="0" id="10000045" name="inst_BF6921C8" depth="99999" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

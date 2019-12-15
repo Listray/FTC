@@ -40,6 +40,7 @@
       </objects>
       <object>objects\o_Robot</object>
       <object>objects\o_Gate</object>
+      <object>objects\o_Controller</object>
     </objects>
     <objects name="Ui">
       <object>objects\o_AbstractButton</object>
