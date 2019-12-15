@@ -198,10 +198,8 @@ if(keyboard_check(m_right))
 else if(keyboard_check(m_left))
     phy_rotation -= m_turnSpd
     
-if(keyboard_check(m_catch))
-    catchEvent()
-else if(keyboard_check(m_throw))
-    throwEvent()
+//if(keyboard_check(m_catch)) catchEvent()
+//else if(keyboard_check(m_throw)) throwEvent()
 
 image_angle = direction
 
