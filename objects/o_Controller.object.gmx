@@ -86,6 +86,13 @@ else if(alarm[0] == 0)
         }
     }
     
+    with(o_Robot)
+    {
+        var nearestBZ = instance_nearest(x, y, o_BuildingZone);
+        if(distance_to_object(nearestBZ) &lt; sprite_width / 2)
+                o_Controller.m_score += 5
+    }
+    
     room_goto(r_score)
 }
 
@@ -113,7 +120,7 @@ else if(alarm[0] == 0)
             <kind>1</kind>
             <string>/// Timer &amp; o_ScoreBanner text
 if(room == r_game)
-    alarm_set(0, /*2 **/ 60 * room_speed);  //  2 mins
+    alarm_set(0, /**/2 * 60 * room_speed);  //  2 mins
 else if(room == r_score)
     o_ScoreBanner.m_buttonText = "Scores: " + string(m_score)
     
