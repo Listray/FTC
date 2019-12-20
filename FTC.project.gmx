@@ -13,6 +13,7 @@
       <sprite>sprites\sp_stone</sprite>
       <sprite>sprites\sp_gate</sprite>
       <sprite>sprites\sp_platform</sprite>
+      <sprite>sprites\sp_parking</sprite>
       <sprite>sprites\sp_gateColumn</sprite>
       <sprite>sprites\sp_buildingZone</sprite>
     </sprites>
@@ -20,6 +21,7 @@
       <sprite>sprites\sp_smallButton</sprite>
       <sprite>sprites\sp_button</sprite>
       <sprite>sprites\sp_banner</sprite>
+      <sprite>sprites\sp_timerBackground</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">
@@ -31,6 +33,7 @@
     <script>scripts\deactivateControlButton.gml</script>
     <script>scripts\throwEvent.gml</script>
     <script>scripts\catchEvent.gml</script>
+    <script>scripts\pickTeam.gml</script>
   </scripts>
   <objects name="objects">
     <objects name="Game">
@@ -39,11 +42,14 @@
         <object>objects\o_Wall</object>
         <object>objects\o_Stone</object>
         <object>objects\o_Skystone</object>
-        <object>objects\o_Collisiable</object>
         <object>objects\o_Platform</object>
+        <object>objects\o_Collisiable</object>
       </objects>
+      <object>objects\o_Bot</object>
       <object>objects\o_Robot</object>
       <object>objects\o_BuildingZone</object>
+      <object>objects\o_ScrCtrl</object>
+      <object>objects\o_Parking</object>
       <object>objects\o_Gate</object>
       <object>objects\o_Controller</object>
     </objects>

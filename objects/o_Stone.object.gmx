@@ -56,7 +56,7 @@ m_pinPlatform = 0
 {
     var nearestGate = instance_nearest(x, y, o_Gate);
     if(nearestGate.image_blend != c_yellow)
-        m_gatePoint = true
+        m_gatePoint = nearestGate.image_blend
 }
 /*
 if(m_pinned == false)

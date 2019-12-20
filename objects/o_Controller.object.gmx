@@ -25,8 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>timerXPos = display_get_gui_width() / 2;
-timerYPos = display_get_gui_height() / 100 * 2; //  2% y offset
+            <string>timerXPos = room_width / 2;
+timerYPos = room_height / 100 * 2; //  2% y offset
 
 draw_set_halign(fa_center);
 
@@ -69,10 +69,10 @@ else if(alarm[0] == 0)
 {
     with(o_Stone)
     {
-        if (m_gatePoint == true)
+        if (m_gatePoint == c_blue)
             o_Controller.m_score++
             
-        if (position_meeting(x, y, o_Platform))
+        if (position_meeting(x, y, o_Platform) &amp;&amp; m_gatePoint = c_blue )
             o_Controller.m_score++
     }
     
@@ -81,7 +81,9 @@ else if(alarm[0] == 0)
         if(m_wasInBZ)
         {         
             var nearestBZ = instance_nearest(x, y, o_BuildingZone);
-            if(distance_to_object(nearestBZ) &gt; sprite_width / 2)
+            if(distance_to_object(nearestBZ) &gt; sprite_width / 2 &amp;&amp;
+                nearestBZ.image_blend == c_blue &amp;&amp;
+                nearestBZ.image_blend == image_blend)
                 o_Controller.m_score += 15
         }
     }
@@ -89,8 +91,18 @@ else if(alarm[0] == 0)
     with(o_Robot)
     {
         var nearestBZ = instance_nearest(x, y, o_BuildingZone);
-        if(distance_to_object(nearestBZ) &lt; sprite_width / 2)
+        if(distance_to_object(nearestBZ) &lt; sprite_width / 2 &amp;&amp; nearestBZ.image_blend == c_blue)
                 o_Controller.m_score += 5
+    }
+    
+    with(o_Bot)
+    {
+        if(image_blend == c_blue)
+        {
+        var nearestBZ = instance_nearest(x, y, o_BuildingZone);
+        if(distance_to_object(nearestBZ) &lt; sprite_width / 2 &amp;&amp; nearestBZ.image_blend == c_blue)
+                o_Controller.m_score += 5
+        }
     }
     
     room_goto(r_score)
@@ -148,9 +160,11 @@ else if(room == r_score)
             <kind>1</kind>
             <string>draw_set_color(c_white)
 
+draw_sprite(sp_timerBackground, 0, timerXPos, timerYPos)
+
 if(alarm[0] &gt; 0)
     draw_text(timerXPos, timerYPos, alarm[0] / room_speed)
-
+    
 </string>
           </argument>
         </arguments>

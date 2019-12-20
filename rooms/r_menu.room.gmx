@@ -53,6 +53,7 @@
   <instances>
     <instance objName="o_RoomGotoButton" x="640" y="192" name="inst_32E302DB" locked="0" code="m_roomToGo = r_game&#xA;m_buttonText = &quot;Play&quot;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="o_RoomGotoButton" x="640" y="320" name="inst_6E907DFF" locked="0" code="m_roomToGo = r_menu //  r_settings&#xA;m_buttonText = &quot;Settings&quot;&#xA;image_blend = c_gray&#xA;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="o_ScrCtrl" x="64" y="0" name="inst_DF31C6B9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>
