@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>/// Pick team
 pickTeam()
-
+m_team = image_blend
 </string>
           </argument>
         </arguments>
