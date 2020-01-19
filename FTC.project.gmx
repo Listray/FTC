@@ -35,13 +35,23 @@
     <script>scripts\catchEvent.gml</script>
     <script>scripts\pickTeam.gml</script>
     <scripts name="ControllerScr">
-      <script>scripts\driveStep.gml</script>
       <script>scripts\autonomusStep.gml</script>
       <script>scripts\countBeforeDrive.gml</script>
+      <script>scripts\driveStep.gml</script>
     </scripts>
+    <script>scripts\addAction.gml</script>
   </scripts>
   <objects name="objects">
     <object>objects\o_ScrCtrl</object>
+    <objects name="Autonomus">
+      <object>objects\o_AutonomusButton</object>
+      <object>objects\o_DeleteAction</object>
+      <object>objects\o_AddAction</object>
+      <object>objects\o_AutoCtrl</object>
+      <object>objects\o_Action</object>
+      <object>objects\o_Direction</object>
+      <object>objects\o_Amount</object>
+    </objects>
     <objects name="Game">
       <objects name="Solid">
         <object>objects\o_GateColumn</object>
@@ -60,7 +70,6 @@
     </objects>
     <objects name="Ui">
       <object>objects\o_AbstractButton</object>
-      <object>objects\o_AutonomusButton</object>
       <object>objects\o_RoomGotoButton</object>
       <object>objects\o_ScoreBanner</object>
     </objects>

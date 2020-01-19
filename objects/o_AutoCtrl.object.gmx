@@ -4,7 +4,7 @@
   <solid>0</solid>
   <visible>-1</visible>
   <depth>0</depth>
-  <persistent>-1</persistent>
+  <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
@@ -25,57 +25,21 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>m_state = 0;
+            <string>/// MakeNullActions
+MAX_ACTIONS = 9;
+m_curAction = 0;
 
-timerXPos = room_width / 2;
-timerYPos = room_height / 100 * 2; //  2% y offset
-
-draw_set_halign(fa_center);
-
-m_score = 0
-
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="3" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/*
-    0   -   autonomus build
-    1   -   autonomus
-    2   -   count 3 2 1 start
-    3   -   drive
-*/
-
-switch(m_state) {
-    case 0: { alarm[0] = 30 * room_speed; break; }
-    case 1: { autonomusStep(); break; }
-    case 2: { countBeforeDrive(); break; }
-    case 3: { driveStep(); break;}
+for(var i = 0; i &lt; MAX_ACTIONS; i++)
+{
+    m_actions[i] = 0;
+    m_directions[i] = 0;
+    m_time[i] = 0;
 }
 
 </string>
           </argument>
         </arguments>
       </action>
-    </event>
-    <event eventtype="7" enumb="4">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -92,18 +56,16 @@ switch(m_state) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Timer &amp; o_ScoreBanner text
-if(room == r_game)
-    alarm_set(0, /**/2 * 60 * room_speed);  //  2 mins
-else if(room == r_score)
-    o_ScoreBanner.m_buttonText = "Scores: " + string(m_score)
-    
+            <string>/// Start coords
+xs = x;
+ys = 18;
+
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="8" enumb="64">
+    <event eventtype="8" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -120,13 +82,18 @@ else if(room == r_score)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_set_color(c_white)
-
-draw_sprite(sp_timerBackground, 0, timerXPos, timerYPos)
-
-if(alarm[0] &gt; 0)
-    draw_text(timerXPos, timerYPos, alarm[0] / room_speed)
+            <string>
+for(var i = 0; i &lt; m_curAction; i++)
+{
     
+    if(m_time[i] == 0)
+        draw_set_color(c_red)
+    else
+        draw_set_color(c_white)
+        
+    draw_text(xs, ys + i * 32,
+        m_actions[i] + " - " + m_directions[i] + " : " + string(m_time[i] / room_speed));
+}
 </string>
           </argument>
         </arguments>
