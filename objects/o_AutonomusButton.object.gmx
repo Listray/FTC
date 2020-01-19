@@ -27,6 +27,7 @@
             <kind>1</kind>
             <string>/// Start Autonomus
 o_Controller.m_state++;
+o_AutoCtrl.m_isActive = true;
 instance_destroy(o_DeleteAction);
 instance_destroy(o_AddAction);
 instance_destroy(o_Action);

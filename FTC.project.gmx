@@ -40,6 +40,10 @@
       <script>scripts\driveStep.gml</script>
     </scripts>
     <script>scripts\addAction.gml</script>
+    <scripts name="Auto">
+      <script>scripts\moveAutonomus.gml</script>
+      <script>scripts\rotateAutonomus.gml</script>
+    </scripts>
   </scripts>
   <objects name="objects">
     <object>objects\o_ScrCtrl</object>

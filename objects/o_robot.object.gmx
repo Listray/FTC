@@ -162,44 +162,43 @@ physics_fixture_bind(m_idleFixture, self)
           <argument>
             <kind>1</kind>
             <string>/// Movement
-
-if(keyboard_check(m_up))
+if(o_Controller.m_state == 3)
 {
-    if(phy_speed_x &gt; m_maxSpd)
-        phy_speed_x = m_maxSpd
+    if(keyboard_check(m_up))
+    {
+        if(phy_speed_x &gt; m_maxSpd)
+            phy_speed_x = m_maxSpd
+        else
+            phy_speed_x += lengthdir_x(m_acceleration, -phy_rotation)
+            
+        if(phy_speed_x &gt; m_maxSpd)
+            phy_speed_x = m_maxSpd
+        else 
+            phy_speed_y += lengthdir_y(m_acceleration, -phy_rotation)
+    }
+    else if(keyboard_check(m_down))
+    {
+        if(phy_speed_x &gt; m_maxSpd)
+            phy_speed_x = m_maxSpd
+        else
+            phy_speed_x += lengthdir_x(-m_acceleration, -phy_rotation)
+            
+        if(phy_speed_x &gt; m_maxSpd)
+            phy_speed_x = m_maxSpd
+        else 
+            phy_speed_y += lengthdir_y(-m_acceleration, -phy_rotation)
+    }
     else
-        phy_speed_x += lengthdir_x(m_acceleration, -phy_rotation)
-        
-    if(phy_speed_x &gt; m_maxSpd)
-        phy_speed_x = m_maxSpd
-    else 
-        phy_speed_y += lengthdir_y(m_acceleration, -phy_rotation)
-}
-else if(keyboard_check(m_down))
-{
-    if(phy_speed_x &gt; m_maxSpd)
-        phy_speed_x = m_maxSpd
-    else
-        phy_speed_x += lengthdir_x(-m_acceleration, -phy_rotation)
-        
-    if(phy_speed_x &gt; m_maxSpd)
-        phy_speed_x = m_maxSpd
-    else 
-        phy_speed_y += lengthdir_y(-m_acceleration, -phy_rotation)
-}
-else
-{
-    phy_speed_x = 0
-    phy_speed_y = 0
-}
-
-if(keyboard_check(m_right))
-    phy_rotation += m_turnSpd
-else if(keyboard_check(m_left))
-    phy_rotation -= m_turnSpd
+    {
+        phy_speed_x = 0
+        phy_speed_y = 0
+    }
     
-//if(keyboard_check(m_catch)) catchEvent()
-//else if(keyboard_check(m_throw)) throwEvent()
+    if(keyboard_check(m_right))
+        phy_rotation += m_turnSpd
+    else if(keyboard_check(m_left))
+        phy_rotation -= m_turnSpd
+}
 
 image_angle = direction
 

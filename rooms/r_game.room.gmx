@@ -3,8 +3,8 @@
   <caption></caption>
   <width>1280</width>
   <height>720</height>
-  <vsnap>6</vsnap>
-  <hsnap>6</hsnap>
+  <vsnap>1</vsnap>
+  <hsnap>1</hsnap>
   <isometric>0</isometric>
   <speed>60</speed>
   <persistent>0</persistent>
@@ -82,7 +82,6 @@
     <instance objName="o_Bot" x="758" y="655" name="inst_4CDE745E" locked="0" code="phy_rotation = -90&#xA;" scaleX="1" scaleY="1" colour="4290822336" rotation="0"/>
     <instance objName="o_Parking" x="349" y="650" name="inst_3E543670" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="o_Parking" x="350" y="68" name="inst_333E2D83" locked="0" code="image_angle = -90&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="o_Bot" x="342" y="657" name="inst_80CF1A93" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="o_AutonomusButton" x="1142" y="640" name="inst_6153EDB3" locked="0" code="m_buttonText = &quot;Start&quot;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="o_Action" x="1050" y="498" name="inst_2304E082" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="o_Direction" x="1140" y="498" name="inst_395EB22A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -90,6 +89,7 @@
     <instance objName="o_AddAction" x="1098" y="540" name="inst_B2F1CFF5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="o_DeleteAction" x="1188" y="540" name="inst_68C59E40" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="o_AutoCtrl" x="1140" y="156" name="inst_E35C5144" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="o_Robot" x="342" y="654" name="inst_5DDB3B56" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="t_gatePlatform" x="610" y="241" w="60" h="238" xo="0" yo="0" id="10000045" name="inst_BF6921C8" depth="99999" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
